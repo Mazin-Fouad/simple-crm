@@ -5,9 +5,8 @@
     </div>
 
     <ul class="menu-itmes-container">
-      <li><mat-icon>dashboard</mat-icon> Dashboard</li>
-      <li><mat-icon>perm_identity</mat-icon>User</li>
-      <li></li>
+      <li routerLink="/"><mat-icon>dashboard</mat-icon> Dashboard</li>
+      <li routerLink="/user"><mat-icon>perm_identity</mat-icon>User</li>
     </ul>
   </mat-drawer>
 
@@ -18,5 +17,9 @@
         <span>Custom Toolbar</span>
       </mat-toolbar-row>
     </mat-toolbar>
+
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </mat-drawer-container>
