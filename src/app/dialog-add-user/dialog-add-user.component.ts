@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 
 @Component({
@@ -10,19 +11,14 @@ export class DialogAddUserComponent {
   user: User = new User();
   birthDate: Date;
 
-  constructor() {
-    this.user.firstName;
-    this.user.lastName;
-    this.user.birthDate;
-    this.user.street;
-    this.user.zipCode;
-    this.user.city;
-  }
-
-  onNoClick() {}
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {}
 
   saveUserData() {
     console.log('User Data', this.user);
     this.user.birthDate = this.birthDate.getTime();
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
   }
 }
