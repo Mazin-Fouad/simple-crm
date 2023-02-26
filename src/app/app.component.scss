@@ -1,7 +1,48 @@
 .mat-drawer-container {
-    height: 100vh;
+    min-height: 100vh;
 
     .menu-icon {
         cursor: pointer;
+    }
+}
+
+.sidenav {
+    width: 20em;
+}
+
+.logo-container {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 0 16px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-toolbar,
+mat-toolbar-row {
+    min-height: 56px;
+    height: 56px;
+}
+
+.menu-itmes-container {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    mat-icon {
+        margin-right: 16px;
+    }
+
+    li {
+        padding: 0 16px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
     }
 }

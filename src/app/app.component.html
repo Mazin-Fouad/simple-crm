@@ -1,6 +1,14 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
+  <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
+    <div class="logo-container">
+      <p>Platz für Logo</p>
+    </div>
+
+    <ul class="menu-itmes-container">
+      <li><mat-icon>dashboard</mat-icon> Dashboard</li>
+      <li><mat-icon>perm_identity</mat-icon>User</li>
+      <li></li>
+    </ul>
   </mat-drawer>
 
   <div class="example-sidenav-content">
