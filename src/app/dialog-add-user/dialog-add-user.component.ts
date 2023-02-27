@@ -21,18 +21,17 @@ export class DialogAddUserComponent {
   saveUserData() {
     this.isDisabled = false;
     this.user.birthDate = this.birthDate.getTime();
-    console.log(this.user);
-    const coll = collection(this.firestore, 'users');
-
-    console.log(typeof this.user);
-
-    setDoc(doc(coll), this.user.toJSON());
-
+    // console.log(this.user);
+    this.addDataFireBase();
     setTimeout(() => {
       this.isDisabled = true;
-    }, 500);
+      this.onNoClick();
+    }, 1000);
+  }
 
-    this.onNoClick();
+  addDataFireBase() {
+    const coll = collection(this.firestore, 'users');
+    setDoc(doc(coll), this.user.toJSON());
   }
 
   onNoClick() {
