@@ -18,16 +18,10 @@
         <th>City</th>
       </tr>
 
-      <tr>
-        <td>Mazin Fouad</td>
-        <td>mf@live.de</td>
-        <td>Karlsruhe</td>
-      </tr>
-
-      <tr>
-        <td>Marian Edwart</td>
-        <td>me@live.de</td>
-        <td>Karlsruhe</td>
+      <tr *ngFor="let user of newUsers" [routerLink]="'/user/' + user.userId">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.city }}</td>
       </tr>
     </table>
   </mat-card-content>

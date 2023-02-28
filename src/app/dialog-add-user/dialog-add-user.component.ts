@@ -36,5 +36,6 @@ export class DialogAddUserComponent {
 
   onNoClick() {
     this.dialogRef.close();
+    console.log(this.user);
   }
 }
