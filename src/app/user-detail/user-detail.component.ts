@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { collection, doc, docData, Firestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-user-detail',
@@ -16,7 +15,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.idUser = params['id']; // idUser has now the param value from URL
+      this.idUser = params['id'];
       console.log(this.idUser);
 
       this.getUser();
@@ -30,6 +29,7 @@ export class UserDetailComponent implements OnInit {
 
     this.user.subscribe((user: any) => {
       console.log('Get User Info', user);
+      this.user = user;
     });
   }
 }
