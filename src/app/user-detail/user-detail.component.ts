@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { collection, doc, docData, Firestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-user-detail',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserDetailComponent implements OnInit {
   idUser: string = '';
-  user: any = {};
+  user: User = new User();
 
   constructor(private route: ActivatedRoute, private firestore: Firestore) {}
 
@@ -28,8 +29,7 @@ export class UserDetailComponent implements OnInit {
     this.user = docData(docRef);
 
     this.user.subscribe((user: any) => {
-      console.log('Get User Info', user);
-      this.user = user;
+      this.user = new User(user);
     });
   }
 }
