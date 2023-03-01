@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { collection, doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 
@@ -9,11 +10,28 @@ import { User } from 'src/models/user.class';
 })
 export class DialogEditAdressComponent {
   user: User;
-  isDisabled: boolean = false;
+  isDisabled: boolean = true;
+  userID: string;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private firestore: Firestore,
+    public dialogRef: MatDialogRef<DialogEditAdressComponent>
+  ) {}
 
-  saveUserData() {}
+  saveUserData() {
+    this.isDisabled = false;
+    const coll = collection(this.firestore, 'users');
+    const docRef = doc(coll, this.userID);
+    updateDoc(docRef, this.user.toJSON());
 
-  onNoClick() {}
+    setTimeout(() => {
+      this.isDisabled = true;
+      this.onNoClick();
+    }, 500);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

@@ -52,12 +52,14 @@ export class UserDetailComponent implements OnInit {
     const dialog = this.dialog.open(DialogEditAdressComponent, {});
     // dialog.componentInstance.user = this.user;
     dialog.componentInstance.user = new User(this.user.toJSON()); // Kopie von dem Objekt erstellen damit es erst nach dem Speichern die Daten aktualisiert werden und nicht vorher.
+    dialog.componentInstance.userID = this.idUser;
   }
 
   editUserDetails(): void {
     const dialog = this.dialog.open(DialogEditUserComponent, {});
     // dialog.componentInstance.user = this.user;
     dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userID = this.idUser;
   }
 
   deleteUser(): void {

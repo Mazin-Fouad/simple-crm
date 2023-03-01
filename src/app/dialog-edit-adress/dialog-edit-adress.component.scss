@@ -1,3 +1,7 @@
 .mdc-dialog__content > :first-child {
     margin-top: 10px;
 }
+
+.mat-progress-bar-disabled {
+    display: none;
+}
