@@ -42,7 +42,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   editAddress(): void {
-    this.dialog.open(DialogEditAdressComponent, {});
+    const dialog = this.dialog.open(DialogEditAdressComponent, {});
+    dialog.componentInstance.user = this.user; // um auf (DialogEditAdressComponent) zu zugreifen und  die variable user in (DialogEditAdressComponent) bekommt von hier this.user
   }
 
   editUserDetails(): void {
