@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { collection, doc, docData, Firestore } from '@angular/fire/firestore';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  docData,
+  Firestore,
+} from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/models/user.class';
 import { DialogEditAdressComponent } from '../dialog-edit-adress/dialog-edit-adress.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
@@ -18,7 +24,8 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firestore: Firestore,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,10 +50,30 @@ export class UserDetailComponent implements OnInit {
 
   editAddress(): void {
     const dialog = this.dialog.open(DialogEditAdressComponent, {});
-    dialog.componentInstance.user = this.user; // um auf (DialogEditAdressComponent) zu zugreifen und  die variable user in (DialogEditAdressComponent) bekommt von hier this.user
+    // dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user.toJSON()); // Kopie von dem Objekt erstellen damit es erst nach dem Speichern die Daten aktualisiert werden und nicht vorher.
   }
 
   editUserDetails(): void {
-    this.dialog.open(DialogEditUserComponent, {});
+    const dialog = this.dialog.open(DialogEditUserComponent, {});
+    // dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user.toJSON());
+  }
+
+  deleteUser(): void {
+    const coll = collection(this.firestore, 'users');
+    const docRef = doc(coll, this.idUser);
+    deleteDoc(docRef)
+      .then(() => {
+        console.log('User document deleted successfully');
+        this.toUserPage();
+      })
+      .catch((error) => {
+        console.error('Error deleting user document:', error);
+      });
+  }
+
+  toUserPage() {
+    this.router.navigateByUrl('/user');
   }
 }

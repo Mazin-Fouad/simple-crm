@@ -1,1 +1,43 @@
-<p>dialog-edit-user works!</p>
+<mat-progress-bar
+  [ngClass]="{ 'mat-progress-bar-disabled': isDisabled }"
+  mode="indeterminate"
+></mat-progress-bar>
+
+<h1 mat-dialog-title>Add User</h1>
+<div mat-dialog-content>
+  <div class="name-input-container">
+    <mat-form-field appearance="outline" class="mr-right">
+      <mat-label>Enter the First Name</mat-label>
+      <input matInput [(ngModel)]="user.firstName" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter the Last Name</mat-label>
+      <input matInput [(ngModel)]="user.lastName" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Enter E-Mail Address</mat-label>
+      <input matInput type="email" [(ngModel)]="user.email" />
+    </mat-form-field>
+  </div>
+
+  <div class="birth-date-container">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Enter Birth Date</mat-label>
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="birthDate" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker1"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="saveUserData()" cdkFocusInitial>Save</button>
+</div>

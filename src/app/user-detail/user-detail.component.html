@@ -9,7 +9,7 @@
 
   <mat-menu #editUserDetail="matMenu" xPosition="before">
     <button mat-menu-item (click)="editUserDetails()">Edit</button>
-    <!-- <button mat-menu-item>Delete</button> -->
+    <button mat-menu-item (click)="deleteUser()">Delete</button>
   </mat-menu>
 
   <mat-card-content>
@@ -29,7 +29,6 @@
 
   <mat-menu #editAdress="matMenu" xPosition="before">
     <button mat-menu-item (click)="editAddress()">Edit</button>
-    <!-- <button mat-menu-item>Delete</button> -->
   </mat-menu>
 
   <mat-card-header>
