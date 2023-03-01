@@ -24,12 +24,12 @@ export class DialogEditUserComponent {
     this.isDisabled = false;
     const coll = collection(this.firestore, 'users');
     const docRef = doc(coll, this.userID);
-    updateDoc(docRef, this.user.toJSON());
-
-    setTimeout(() => {
-      this.isDisabled = true;
-      this.onNoClick();
-    }, 500);
+    updateDoc(docRef, this.user.toJSON()).then(() => {
+      setTimeout(() => {
+        this.isDisabled = true;
+        this.onNoClick();
+      }, 500);
+    });
   }
 
   onNoClick(): void {
