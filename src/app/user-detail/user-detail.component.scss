@@ -4,6 +4,7 @@
     min-height: 250px;
     display: flex;
     justify-content: flex-end;
+    position: relative;
 
     img {
         width: 100px;
@@ -25,8 +26,22 @@
             margin-bottom: unset;
         }
     }
+
+    .user-detail-btn {
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+    }
 }
 
 .user-details-main {
     margin-top: 32px;
+    position: relative;
+
+    .edit-btn {
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+        cursor: pointer;
+    }
 }

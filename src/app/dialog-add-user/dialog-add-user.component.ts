@@ -26,7 +26,7 @@ export class DialogAddUserComponent {
     setTimeout(() => {
       this.isDisabled = true;
       this.onNoClick();
-    }, 1000);
+    }, 500);
   }
 
   addDataFireBase() {

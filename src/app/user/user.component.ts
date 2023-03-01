@@ -27,7 +27,7 @@ export class UserComponent implements OnInit {
     this.item$.subscribe((newUser: any) => {
       setTimeout(() => {
         this.newUsers = newUser;
-      }, 1000);
+      }, 500);
       console.log(this.newUsers);
     });
   }

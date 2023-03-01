@@ -26,10 +26,11 @@ export class UserDetailComponent implements OnInit {
   getUser() {
     const coll = collection(this.firestore, 'users');
     const docRef = doc(coll, this.idUser);
-    this.user = docData(docRef);
+    const user$ = docData(docRef);
 
-    this.user.subscribe((user: any) => {
-      this.user = new User(user);
+    user$.subscribe((userData: any) => {
+      console.log('Get User Info', userData);
+      this.user = new User(userData);
     });
   }
 }
